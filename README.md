@@ -1,2 +1,2 @@
 # Docs
-View at [aberfish.github.io/docs/](https://aberfish.github.io/docs/)
+View at [aberfish.github.io/](https://aberfish.github.io/)

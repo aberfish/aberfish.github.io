@@ -17,3 +17,5 @@ Timesyncd only syncs with the NTP server on startup, so if the server was not ru
 - ```sudo timedated set-ntp on```
 
 Now confirm that Timesyncd has synced with the NTP server by once again running ```sudo timedatectl status```.
+
+If you are following this setup on another device so that it is also synced to the NTP server, you may recive and error stating that NTP is not available when running the commands to set ntp off and on. In this case run the command ```sudo apt install systemd-timesyncd``` _even if you think you have timesyncd installed_.

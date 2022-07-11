@@ -9,7 +9,7 @@ It is likely that the system time of the raspbery pi on board Tango is not synce
 
 If this is not the case, begin by setting up a NTP server on the device running roscore. Install NTP using apt, all default settings should work. Start the service with ```sudo service ntp start```.
 
-SSH into Tango and edit ```/etc/systemd/timesyncd.conf```. Edit the line begining ```NTP=``` to add the IP address of the device running roscore after the equals. Multiple IPs can be added with a space between them, but this is not advsed.
+SSH into Tango and edit ```/etc/systemd/timesyncd.conf```. Edit the line begining ```NTP=``` to add the IP address of the device running roscore after the equals. Make sure it is not commented out by removing any ```#``` at the start of the line that may be present. Multiple IPs can be added with a space between them, but this is not advsed.
 
 Timesyncd only syncs with the NTP server on startup, so if the server was not running, or the device was not on the ROSBOX network when Tango started, run the following three commands on Tango:
 - ```sudo systemctl daemon-reload```

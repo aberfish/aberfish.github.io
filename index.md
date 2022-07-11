@@ -3,6 +3,7 @@ We are trying to create a...
 
 ## Pages
 [Tango](tango.md)
+[translate_coords](translate_coords.md)
 
 ## Markdown examples
 

@@ -1,6 +1,9 @@
 ## Goal
 We are trying to create a...
 
+## Pages
+[Tango](tango.md)
+
 ## Markdown examples
 
 ```markdown

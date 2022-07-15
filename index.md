@@ -2,8 +2,10 @@
 We are trying to create a...
 
 ## Pages
-[Tango](tango.md)
-[translate_coords](translate_coords.md)
+- [Tango](tango.md)
+- [translate_coords](translate_coords.md)
+- [tango-tracker](tango-tracker.md)
+- [tango_rtabmap](tango_rtabmap)
 
 ## Markdown examples
 

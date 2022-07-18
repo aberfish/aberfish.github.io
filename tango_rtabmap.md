@@ -13,7 +13,7 @@ Make sure you have all required dependancies already installed: \[Ubuntu]
 - ```sudo apt install ros-noetic-rtabmap-ros```
 - ```sudo apt install ros-noetic-global-planner```
 - ```sudo apt install chrony```
-- DWA planner causes std::badalloc() errors if installed via apt, please install from source [**<ins>here<ins/>**](https://github.com/ros-planning/navigation/tree/noetic-devel/dwa_local_planner)
+- DWA planner causes std::badalloc() errors if installed via apt, please install from source [**<ins>here</ins>**](https://github.com/ros-planning/navigation/tree/noetic-devel/dwa_local_planner)
 
 Build and source your ROS workspace:
 - ```cd <path_to_workspace_dir>```

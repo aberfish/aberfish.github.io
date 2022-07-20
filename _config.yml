@@ -1,7 +1,7 @@
 theme: minima
 
 minima:
-  skin: dark
+  skin: solarized
   
 header_pages:
   - index.md

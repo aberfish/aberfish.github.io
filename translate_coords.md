@@ -1,5 +1,4 @@
-[Home](index.md)
-# translate_coords documentation 
+# translate_coords 
 
 ## Package overview  
     

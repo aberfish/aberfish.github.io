@@ -17,11 +17,11 @@ Explore whether a robot can successfuly use fish as demonstrators within Learnin
  - Improve path following to smooth movements out
  - Improve overhead camera tracking to remove noise and increase accuracy
 
-## Pages
+## DOCUMENTATION
 ### FAQs and General Information
 - [Working with Tango](tango.md)
 
-### Package Documentation
+### Packages
 - [translate_coords](translate_coords.md)
 - [tango_tracker](tango-tracker.md)
 - [tango_rtabmap](tango_rtabmap)

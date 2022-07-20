@@ -1,4 +1,4 @@
-# AberFish Research Project
+# Homepage
 ## Goals
 Translate fish movements into a mobile robot control algorithm, allowing a mobile robot to learn from fish decision making and route selection.
 

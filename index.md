@@ -22,6 +22,6 @@ Explore whether a robot can successfuly use fish as demonstrators within Learnin
 - [Working with Tango](tango.md)
 
 ### Package Documentation
-- [PACKAGE - translate_coords](translate_coords.md)
-- [PACKAGE - tango_tracker](tango-tracker.md)
-- [PACKAGE - tango_rtabmap](tango_rtabmap)
+- [translate_coords](translate_coords.md)
+- [tango_tracker](tango-tracker.md)
+- [tango_rtabmap](tango_rtabmap)

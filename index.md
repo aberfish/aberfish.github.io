@@ -1,6 +1,5 @@
-# Homepage
-## Goals
-Translate fish movements into a mobile robot control algorithm, allowing a mobile robot to learn from fish decision making and route selection.
+## Homepage
+This project aims to translate fish movements into a mobile robot control algorithm, allowing a robot to learn from fish decision making and route selection.
 
 Explore whether a robot can successfuly use fish as demonstrators within Learning by Demonstration models to complete a task.
 

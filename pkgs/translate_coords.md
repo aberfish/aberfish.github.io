@@ -120,3 +120,45 @@ ROS Rate: *none*
 
 ## Launch files
 
+### serve_goals
+
+Starts and configures all nodes required to convert input camera pixel coordinates to movebase goals.
+
+Does not start movebase or other navigation nodes.
+
+Camera pixel coordinates can be input manually using the command ```rostopic pub -1 /input_coords geometry_msgs/Point "X" "Y" "0"```, where X and Y are replaced by integer values within the camera image width and height.
+
+#### Info
+
+Dependency Packages: *realsense2_camera*
+
+Usage: ```roslaunch translate_coords serve_goals.launch```
+
+#### Arguments
+
+- *serial_no* (string): Serial number of overhead camera. Defaults to ''.
+- *json_file_path* (string): Defaults to ''.
+- *camera* (string): Camera name. Defaults to 'camera'.
+- *img_width* (int): Width of depth and colour image from camera. Defaults to 848.
+- *img_height* (int): Height of depth and colour image from camera. Defaults to 480.
+
+### translate_tracker
+
+Starts and configures all nodes required to track a 5x5 (size in squares) 50 (number of available IDs) ARUCO marker and translate the position into the map frame.
+
+Does not start movebase or other navigation nodes.
+
+#### Info
+
+Dependency Packages: *realsense2_camera, tango_tracker*
+
+Usage: ```roslaunch translate_coords translate_tracker.launch```
+
+#### Arguments
+
+- *serial_no* (string): Serial number of overhead camera. Defaults to ''.
+- *json_file_path* (string): Defaults to ''.
+- *camera* (string): Camera name. Defaults to 'camera'.
+- *img_width* (int): Width of depth and colour image from camera. Defaults to 848.
+- *img_height* (int): Height of depth and colour image from camera. Defaults to 480.
+- *marker_size* (float): Width and height of the ARUCO marker which will be tracked in cm. Defaults to 7.3.

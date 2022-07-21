@@ -1,5 +1,5 @@
 ---
-title: Homepage
+title: AberFish Research Project
 ---
 This project aims to translate fish movements into a mobile robot control algorithm, allowing a mobile robot to learn from fish decision making and route selection. It will explore whether a robot can successfuly use fish as demonstrators within Learning by Demonstration models to complete a task.
 

@@ -1,4 +1,6 @@
-# Tango Robot Setup
+---
+title: Tango Robot Setup
+---
 
 ## Time sync
 When errors occur during runtime using RTABMap which appear similar to the following:

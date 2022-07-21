@@ -1,4 +1,8 @@
-# tango_rtabmap
+---
+title: tango_rtabmap
+layout: repository
+---
+
 ROS package using rtabmap and move_base to construct a map from sensor data in real time to be used in path planning and navigation applications.
 Configured for the tango robot
 

@@ -1,56 +1,102 @@
-# translate_coords 
+---
+title: translate_coords
+layout: repository
+---
 
 ## Package overview  
-    
-The translate_coords package currently converts 2d pixel coordinates from the camera frame to 3d coordinates in the real world frame. The camera is a realsense d435. *soon it will be able to convert 3d coordinates in the real world frame into coordinates for the rtab map coordinate frame.*  
 
-## scripts
-  
-### cam_depthcoords.py  
-  
-This script converts the pixel coordinates from the camera coordinate system to 3d coordinates (in meters) in the real world camera coordinate system. 
+The translate_coords package contains nodes for converting pixel coordinates from an overhead depth camera to movebase goals intended for a mobile robot.
 
-It initialises one node 'cam_to_depthcoords'. 
-  
-'cam_to_depthcoords' subscribes to:  
-  
-- '/camera/depth/camera_info', message type: CameraInfo  
-This topic provides data about the intrinsic camera parameters.  
-  
-- '/camera/aligned_depth_to_color/image_raw', message type: Image  
-This topic provides frame by frame image data from the camera  
-  
-- 'input_coords', message type: Point  
-This topic provides the 2d coordinates that are to be converted from pixel to real world.
+## Nodes
 
-'cam_to_depth_coords' publishes to:  
+---
+
+### cam_to_depthcoords.py  
+
+Deprojects pixel coordinates from an overhead depth camera into 3D points in the camera coordinate system, measured in meters.
+
+The 3D points are XYZ coordinates with X being the horizontal distance to the camera side to side, Y being the horizontal distance up and down, and Z being the vertical distance. Note that this coordinate system follows the Left Hand Rule.
+
+#### Info
+
+Default node name: *cam_to_depthcoords*
+
+Dependencies: *rospy, ros_numpy, cv_bridge, geometry_msgs, sensor_msgs, numpy, pyrealsense2*
+
+ROS Rate: *30hz*
+
+#### Topics
+
+##### Subscribes
+
+- */camera/depth/camera_info* (sensor_msgs/CameraInfo): The intrinsic parameters from the overhead camera.
+
+- */camera/aligned_depth_to_color/image_raw* (sensor_msgs/CameraInfo): The depth image frames from the overhead camera.
+
+- *input_coords* (geometry_msgs/Point): The 2D coordinates to deproject into 3D points.
+
+##### Publishes
   
-- 'depth_coords', message type: Point.
-Once the conversion has occured the 3d real world point is published to this topic. 
+- *depth_coords* (geometry_msgs/Point): The deprojected 3D points, measured in meters.
+
+---
 
 ### cam_transform.py
 
-This script broadcasts a description of a static transform from the map frame to the camera frame.  
+Broadcasts a static transform from the map frame to the camera base frame.  
+
+#### Info
+
+Default node name: *cam_tf_broadcaster*
+
+Dependencies: *rospy, tf2, geometry_msgs*
+
+ROS Rate: *none*
+
+#### Parameters
+
+- *~tf_pos* ([float, float, float]): XYZ translation for transform. Defaults to [0, 0, 0].
+- *~tf_rot* ([float, float, float, float]): Quaternion rotation for transform. Defaults to [0, 0, 0, 0].
+- *~map_frame* (string): Name of map frame. Defaults to 'map'.
+- *~cam_frame* (string): Name of camera frame. Defaults to '_link'.
   
-It broadcasts the transform to '/tf_static' .
-  
-It initialises one node 'cam_tf_broadcaster'.
-  
+---
+
 ### depth_to_mapcoords.py
 
-This script performs a translation on the point provided in the depth_coords topic. The point is currently in the real world cooridnate system with the camera at the origin of the coordinate axis. A transform is applied such that the point is now relative to the 'map' frame. The map frame is also in the real world coordinate system but the origin of the axis is the point where Tango physically starts from (marked with tape).
+Transforms 3D points in the camera coordinate system to the map frame.
 
-It initialises one node 'depth_to_mapcoords'
+It should be noted that ROS coordinates follow the Right Hand Rule whilst the camera coordinate system follows the Left Hand Rule, so the Z axis of the input points are flipped to account for this.
 
-'depth_to_mapcoords' subscribes to:
+A transform between the camera frame and the map frame must be broadcast before this node starts, for example by starting the *cam_transform* node.
 
-- 'depth_coords', message type: Point
+#### Info
 
-'depth_coords' publishes to:
+Default node name: *depth_to_mapcoords*
 
-- 'world-coords', message type: PointStamped.
+Dependencies: *rospy, tf2_ros, geometry_msgs, tf2_geometry_msgs*
+
+ROS Rate: *30hz*
+
+#### Topics
+
+##### Subscribes
+
+- *depth_coords* (geometry_msgs/Point): The camera 3D point to translate.
+
+##### Publishes
+  
+- *realworld_coords* (geometry_msgs/PointStamped): The translated point, now in the map frame.
+
+#### Parameters
+
+- *~map_frame* (string): Name of map frame. Defaults to 'map'.
+- *~cam_frame* (string): Name of camera frame. Defaults to '_link'.
+- *~tf_timeout* (float): Number of seconds to wait for a transform between the map and camera frame before timeing out.
+
+---
 
 ### goal_server.py
 
-## How to run 
+## Launch files
 

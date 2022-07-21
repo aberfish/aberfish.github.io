@@ -5,9 +5,17 @@ This project aims to translate fish movements into a mobile robot control algori
 
 ## DOCUMENTATION
 ### General Information
-- [Working with Tango](tango.md)
+- [Project Structure](about)
+- [Working with Tango](tango)
 
 ### Packages
-- [translate_coords](pkgs/translate_coords.md)
-- [tango_tracker](pkgs/tango_tracker.md)
+- [translate_coords](pkgs/translate_coords)
+- [tango-tracker](pkgs/tango_tracker)
 - [tango_rtabmap](pkgs/tango_rtabmap)
+
+### Other Repositories
+- [tango_experiments](repos/tango_experiments)
+- [realsense-ros](repos/realsense-ros)
+- [tango_controller](repos/tango_controller)
+- [meetings](repos/meetings)
+- [aberfish.github.io](repos/githubpages)

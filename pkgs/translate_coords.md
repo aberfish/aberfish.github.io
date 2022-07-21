@@ -82,11 +82,11 @@ ROS Rate: *30hz*
 
 ##### Subscribes
 
-- *depth_coords* (geometry_msgs/Point): The camera 3D point to translate.
+- *depth_coords* (geometry_msgs/Point): The camera 3D points to translate.
 
 ##### Publishes
   
-- *realworld_coords* (geometry_msgs/PointStamped): The translated point, now in the map frame.
+- *realworld_coords* (geometry_msgs/PointStamped): The translated points, now in the map frame.
 
 #### Parameters
 
@@ -97,6 +97,26 @@ ROS Rate: *30hz*
 ---
 
 ### goal_server.py
+
+Sends 3D points in the map frame to the movebase Action server. Goals always have an orientation of [0, 0, 0] degrees.
+
+#### Info
+
+Default node name: *goal_server*
+
+Dependencies: *rospy, actionlib, move_base_msgs, geometry_msgs, tf*
+
+ROS Rate: *none*
+
+#### Topics
+
+##### Subscribes
+
+- *goal_coords* (geometry_msgs/PointStamped): The goals as 3D points in the map frame.
+
+#### Parameters
+
+- *~map_frame* (string): Name of map frame. Defaults to 'map'.
 
 ## Launch files
 
